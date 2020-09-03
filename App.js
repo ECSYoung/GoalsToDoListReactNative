@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState('');
-  const [courseGoals, setCourseGoals] = useState('');
+  const [courseGoals, setCourseGoals] = useState([]);
 
   // set state from input text
   const goalInputHandler = (enteredText) => {
@@ -28,8 +28,8 @@ export default function App() {
           onPress={addGoalHandler} />
       </View>
       <View>
-
-      </View>
+        {courseGoals.map((goal) => <Text key={goal}>{goal}</Text>)}
+      </View>   
     </View>
   );
 }
