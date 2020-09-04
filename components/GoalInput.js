@@ -1,27 +1,37 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Modal } from 'react-native';
+
 const GoalInput = props => {
     const [enteredGoal, setEnteredGoal] = useState('');
-
-     // set state from input text
-    const goalInputHandler = (enteredText) => {
-        setEnteredGoal(enteredText);
+  
+    const goalInputHandler = enteredText => {
+      setEnteredGoal(enteredText);
+    };
+  
+    const addGoalHandler = () => {
+      props.onAddGoal(enteredGoal);
+      setEnteredGoal('');
     };
 
     return(
-        <Modal visible={props.visible} animationType="slide"> 
-            <View style={ styles.inputContainer }>
-                <TextInput 
-                placeholder="Course Goal" 
-                style={ styles.input }
-                onChangeText={goalInputHandler}
-                value={enteredGoal} />
-                <Button 
-                title="ADD"
-                onPress={() => props.onAddGoal(enteredGoal)} />
-            {/* can also write: onPress={props.onAddGoal.bind(this, enteredGoal)} */}
-            </View>
-        </Modal>
+        <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Course Goal"
+          style={styles.input}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="CANCEL" color="red" onPress={props.onCancel} />
+          </View>
+          <View style={styles.button}>
+            <Button title="ADD" onPress={addGoalHandler} />
+          </View>
+        </View>
+      </View>
+    </Modal>
     )
 };
 
