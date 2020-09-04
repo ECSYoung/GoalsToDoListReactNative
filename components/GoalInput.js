@@ -48,6 +48,15 @@ const styles = StyleSheet.create({
       borderWidth: 1, 
       padding: 10, 
       width: '80%'
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '60%'
+    },
+    button: {
+        margin: 2,
+        width: '40%'
     }
   });
 
