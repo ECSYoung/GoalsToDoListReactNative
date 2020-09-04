@@ -15,23 +15,23 @@ const GoalInput = props => {
 
     return(
         <Modal visible={props.visible} animationType="slide">
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Course Goal"
-          style={styles.input}
-          onChangeText={goalInputHandler}
-          value={enteredGoal}
-        />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button title="CANCEL" color="red" onPress={props.onCancel} />
-          </View>
-          <View style={styles.button}>
-            <Button title="ADD" onPress={addGoalHandler} />
-          </View>
-        </View>
-      </View>
-    </Modal>
+            <View style={styles.inputContainer}>
+                <TextInput
+                placeholder="Enter A Goal To Add"
+                style={styles.input}
+                onChangeText={goalInputHandler}
+                value={enteredGoal}
+                />
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button title="CANCEL" color="red" onPress={props.onCancel} />
+                    </View>
+                    <View style={styles.button}>
+                        <Button title="ADD" onPress={addGoalHandler} />
+                    </View>
+                </View>
+            </View>
+        </Modal>
     )
 };
 
