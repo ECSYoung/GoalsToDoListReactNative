@@ -5,12 +5,14 @@ import GoalInput from './components/GoalInput';
 
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
+  const [isAddMode, setIsAddMode] = useState(false);
 
   const addGoalHandler = goalTitle => {
     setCourseGoals(currentGoals => [
       ...courseGoals, 
       { id: Math.random().toString(), value: goalTitle }
     ]);
+    setIsAddMode(false);
     // console.log(enteredGoal);
   };
 
@@ -18,11 +20,12 @@ export default function App() {
     setCourseGoals( currentGoals => {
       return currentGoals.filter((goal) => goal.id !== goalID);
     });
-  }
+  } 
 
   return (
     <View style={ styles.screen }>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <Button title="Add New Goal" onPress={() => setIsAddMode(true)}/>
+      <GoalInput visible={isAddMode} onAddGoal={addGoalHandler} />
       <FlatList 
         keyExtractor={(item, index) => item.id}
         data={courseGoals} 
